@@ -1,9 +1,10 @@
 export const STATUS = {
-  serverError: 500,
+  server: 500,
   success: 200,
+  noContent: 204,
   created: 201,
   badRequest: 400,
   unauthorized: 401,
-  notFound: 404,
+  notFound: 400,
   forbidden: 403,
 };

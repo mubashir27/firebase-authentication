@@ -1,4 +1,4 @@
-require("dotenv").config({ path: ".env" });
+require("dotenv").config({ path: ".env.local" });
 import express, { Express, Request, Response, json } from "express";
 import cors from "cors";
 import morgan from "morgan";

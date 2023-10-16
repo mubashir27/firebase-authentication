@@ -1,3 +1,14 @@
+export interface IEmail {
+  email: string;
+}
+
+export type IData = (data: {
+  to: string;
+  subject: string;
+  text: string;
+  html: string;
+}) => void;
+
 export interface EmailValidationSchema {
   in: Location;
   exists: { options: { checkNull: boolean; checkFalsy: boolean } };

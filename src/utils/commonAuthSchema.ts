@@ -1,4 +1,4 @@
-import { ERRORS } from "../messages/error";
+import { ERRORS } from "../messages/errors";
 import { EmailValidationSchema, TextValidationSchema } from "../types";
 import { Location } from "express-validator";
 
