@@ -1,0 +1,27 @@
+export interface EmailValidationSchema {
+  in: Location;
+  exists: { options: { checkNull: boolean; checkFalsy: boolean } };
+  errorMessage: string;
+  isString: { errorMessage: string; bail: boolean };
+  notEmpty: {
+    options: { ignore_whitespace: boolean };
+    errorMessage: string;
+    bail: boolean;
+  };
+  isEmail: { errorMessage: string; bail: boolean };
+  normalizeEmail: boolean;
+  trim: boolean;
+}
+export interface TextValidationSchema {
+  in: Location;
+  exists: { options: { checkNull: boolean; checkFalsy: boolean } } | null;
+  errorMessage: string;
+  isString: { errorMessage: string; bail: boolean };
+  notEmpty: {
+    options: { ignore_whitespace: boolean };
+    errorMessage: string;
+    bail: boolean;
+  };
+  trim: boolean;
+  optional: { options: { nullable: boolean } } | null;
+}
