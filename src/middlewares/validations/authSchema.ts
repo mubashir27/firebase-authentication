@@ -26,12 +26,6 @@ const signUpSchema = checkSchema({
   name: simpleTextSchemaFunc({
     label: "name",
   }) as unknown as ParamSchema,
-  surName: simpleTextSchemaFunc({
-    label: "surName",
-  }) as unknown as ParamSchema,
-  phoneNumber: simpleTextSchemaFunc({
-    label: "phoneNumber",
-  }) as unknown as ParamSchema,
 });
 
 export { signUpSchema };

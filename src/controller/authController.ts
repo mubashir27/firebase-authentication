@@ -22,7 +22,7 @@ const usersCollection = db.collection("users");
 //  to create a new user
 const createUser = asyncHandler(async (req: Request, res: Response) => {
   try {
-    const { email, password, name, surName, phoneNumber } = req.body;
+    const { email, password, name } = req.body;
     // create a new user in db
     const id = generatePassword(10, false);
     // salt a password
@@ -34,9 +34,7 @@ const createUser = asyncHandler(async (req: Request, res: Response) => {
     await usersCollection.doc(id).set({
       id,
       name,
-      surName,
       email,
-      phoneNumber,
       password: hashedPassword,
       verified: false,
       otp,
