@@ -70,4 +70,53 @@ const simpleTextSchemaFunc = ({
   trim: true,
 });
 
-export { emailAddressSchema, passwordSchemaFunct, simpleTextSchemaFunc };
+const simpleBooleanSchemaFunc = ({
+  dataIn = "body",
+  label = "",
+  required = true,
+}) => ({
+  in: [dataIn],
+  exists: required ? { options: { checkNull: true, checkFalsy: true } } : null,
+  optional: required ? null : { options: { nullable: true } },
+  errorMessage: `${label} ${ERRORS.required}`,
+  isString: {
+    errorMessage: `${label} ${ERRORS.mustBeString}`,
+    bail: true,
+  },
+  notEmpty: {
+    options: { ignore_whitespace: true },
+    errorMessage: `${label} ${ERRORS.required}`,
+    bail: true,
+  },
+  trim: true,
+});
+
+// simple simpleIntSchemaFunc for checking if input is integer
+const simpleIntSchemaFunc = ({
+  dataIn = "body",
+  label = "",
+  required = true,
+}) => ({
+  in: [dataIn],
+  exists: required ? { options: { checkNull: true, checkFalsy: true } } : null,
+  optional: required ? null : { options: { nullable: true } },
+  errorMessage: `${label} ${ERRORS.required}`,
+  isInt: {
+    errorMessage: `${label} ${ERRORS.mustBeAnInt}`,
+    bail: true,
+  },
+  notEmpty: {
+    options: { ignore_whitespace: true },
+    errorMessage: `${label} ${ERRORS.required}`,
+    bail: true,
+  },
+  trim: true,
+});
+
+export {
+  emailAddressSchema,
+  passwordSchemaFunct,
+  simpleTextSchemaFunc,
+  simpleBooleanSchemaFunc,
+  simpleIntSchemaFunc,
+};

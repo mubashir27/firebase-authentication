@@ -1,18 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { STATUS } from "../messages/statusCodes";
-import admin from "../config/firebase-admin";
+import { usersCollection } from "../config/firebase-admin";
 import { ERRORS } from "../messages/errors";
-
-const db = admin.firestore();
-const usersCollection = db.collection("users");
+import jwt from "jsonwebtoken";
 
 const checkUserExists = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  // CONSTANTS
   try {
     // checking if the user already exists
     const user = await usersCollection
@@ -29,7 +26,6 @@ const checkUserExists = async (
 };
 
 const checkUser = async (req: Request, res: Response, next: NextFunction) => {
-  // CONSTANTS
   try {
     // checking if the user already exists
     const user = await usersCollection
@@ -58,4 +54,29 @@ const checkSchemaError = (req: Request, res: Response, next: NextFunction) => {
   }
   return next(); // moving to the next function
 };
-export { checkUserExists, checkSchemaError, checkUser };
+
+const authMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (req?.headers?.authorization?.startsWith("Bearer")) {
+    let token = req.headers?.authorization.split(" ")[1];
+    try {
+      if (token) {
+        const decode = jwt.verify(token, process.env.JWT_SECRET || "") as {
+          id: string;
+        };
+        const user = await usersCollection.doc(decode.id);
+        (req as any).user = user;
+        next();
+      }
+    } catch (error) {
+      res.status(STATUS.badRequest).send({ error: ERRORS.tokenNotFound });
+    }
+  } else {
+    res.status(STATUS.badRequest).send({ error: ERRORS.tokenMissing });
+  }
+};
+
+export { checkUserExists, checkSchemaError, checkUser, authMiddleware };

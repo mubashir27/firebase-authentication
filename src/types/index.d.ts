@@ -36,3 +36,14 @@ export interface TextValidationSchema {
   trim: boolean;
   optional: { options: { nullable: boolean } } | null;
 }
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+  otp: string;
+  otp_expires: Date;
+  verified: boolean;
+  phoneNumber: string;
+  surName: string;
+  name: string;
+};

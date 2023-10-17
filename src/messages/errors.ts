@@ -12,8 +12,12 @@ export const ERRORS = {
   invalidOTP: "Invalid OTP",
   mustBeString: "must be string",
   serverError: "Server error",
+  mustBeAnInt: "must be an integer",
   invalidParameter: "Invalid parameter",
   invalidReqBody: "Invalid request body. Parameters required",
   invalidPassType:
     "Invalid password, should contain one number, one uppercase,one lowercase and length should be atleast 8.",
+  passwordShouldBeSame: "Invalid password, should be same",
+  tokenNotFound: "Not authorized token. Please login",
+  tokenMissing: "There is no token attached with header",
 };
