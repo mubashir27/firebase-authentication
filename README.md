@@ -66,4 +66,7 @@ cd firebase-authentication-nodeJS
 
 # Install dependencies
 npm install
+
+# Start project
+npm run start:dev
 ```
