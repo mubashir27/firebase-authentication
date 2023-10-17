@@ -31,10 +31,10 @@ List the key features of your project.
 
 - for firebase configuration in your project and add serviceAccount.json in root
 
-# ServiceAccount.json format
+### ServiceAccount.json format
 
 ```bash
-- {
+{
   "type": "service_account",
   "project_id": "your-project-id",
   "private_key_id": "your-private-key-id",
@@ -46,10 +46,11 @@ List the key features of your project.
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account-email%40your-project-id.iam.gserviceaccount.com"
   }
-- create .env file in root and make sure to add these variable
 ```
 
-# ENV file format
+- create .env file in root and make sure to add these variable
+
+### ENV file format
 
 ```bash
 NODE_ENV=local
