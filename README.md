@@ -8,8 +8,6 @@ Brief description of your project.
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Authentication Flows]
-- [Database - Firestore]
 
 ## Introduction
 
