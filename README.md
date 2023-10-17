@@ -8,12 +8,8 @@ Brief description of your project.
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Authentication Flows](#authentication-flows)
-- [Database - Firestore](#database---firestore)
-- [Contributing](#contributing)
-- [License](#license)
+- [Authentication Flows]
+- [Database - Firestore]
 
 ## Introduction
 
